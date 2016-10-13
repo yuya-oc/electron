@@ -53,6 +53,7 @@ REFERENCE_MODULE(atom_browser_window);
 REFERENCE_MODULE(atom_common_asar);
 REFERENCE_MODULE(atom_common_clipboard);
 REFERENCE_MODULE(atom_common_crash_reporter);
+REFERENCE_MODULE(atom_common_desktop_notification);
 REFERENCE_MODULE(atom_common_native_image);
 REFERENCE_MODULE(atom_common_screen);
 REFERENCE_MODULE(atom_common_shell);
