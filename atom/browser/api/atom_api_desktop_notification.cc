@@ -17,6 +17,12 @@ Notification::Notification(v8::Isolate* isolate) :
   desktop_notification_->AddObserver(this);
 }
 
+Notification::Notification(v8::Isolate* isolate, DesktopNotification* notification) :
+  desktop_notification_(notification) {
+  Init(isolate);
+  desktop_notification_->AddObserver(this);
+}
+
 Notification::~Notification() {
 }
 
@@ -32,10 +38,12 @@ void Notification::OnFail() {
   Emit("fail");
 }
 
+#if defined(OS_WIN) || defined(OS_LINUX)
 // static
 mate::Handle<Notification> Notification::CreateHandle(v8::Isolate* isolate) {
   return mate::CreateHandle(isolate, new Notification(isolate));
 }
+#endif
 
 v8::Local<v8::Value> Notification::Create(const std::string& title,
                                           mate::Arguments* args) {

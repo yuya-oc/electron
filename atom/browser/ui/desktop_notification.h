@@ -31,6 +31,9 @@ using ToastFailedEventHandler = ABI::Windows::Foundation::ITypedEventHandler<
   ABI::Windows::UI::Notifications::ToastNotification*,
   ABI::Windows::UI::Notifications::ToastFailedEventArgs*>;
 #endif
+#if defined(OS_MACOSX)
+
+#endif
 
 class DesktopNotificationOption {
  public:
@@ -45,7 +48,7 @@ class DesktopNotification {
   static DesktopNotification* Create();
   virtual ~DesktopNotification();
 
-  bool Show(const std::string& title,
+  virtual bool Show(const std::string& title,
             const DesktopNotificationOption& option);
 
   void AddObserver(DesktopNotificationObserver* obs) {

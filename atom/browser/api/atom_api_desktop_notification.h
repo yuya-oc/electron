@@ -26,6 +26,7 @@ class Notification :
 
  protected:
   explicit Notification(v8::Isolate* isolate);
+  Notification(v8::Isolate* isolate, atom::DesktopNotification* notification);
   ~Notification() override;
 
   // DesktopNotificationObserver overrides.
@@ -36,8 +37,8 @@ class Notification :
   void Close();
 
  private:
-  std::unique_ptr<
-    atom::DesktopNotification> desktop_notification_;
+   std::unique_ptr<
+     atom::DesktopNotification> desktop_notification_;
 
   DISALLOW_COPY_AND_ASSIGN(Notification);
 };
